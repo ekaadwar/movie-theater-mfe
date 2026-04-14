@@ -7,8 +7,10 @@ const dummyItem = [{name:"Dummy Movie"}]
 const HomeContent = (props) => {
   const [movies, setMovies] = useState(dummyItem);
 
-  useEffect(() => {
-    // Add the logic to load the movies from server and set to the state
+  useEffect(async () => {
+    const resp = await fetch("http://localhost:5555/movies")
+    const data = await resp.json()
+    console.log({data})
   }, []);
 
   const movieClicked = (item) => {
