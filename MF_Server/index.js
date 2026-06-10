@@ -1,40 +1,34 @@
-const Express = require("express");
+const express = require("express");
 const moviesData = require("./moviesData.json");
 const path = require("path");
 const cors = require("cors");
 
-const App = Express();
+const app = express();
+const PORT = 5555;
 
-App.use(cors());
-App.use(Express.static('public'))
+app.use(cors());
+app.use(express.json());
 
-App.get("/movies", (req, res) => {
-  res.send(moviesData);
+app.use("/images", express.static(path.join(__dirname, "public/images")));
+
+app.get("/movies", (req, res) => {
+  res.json(moviesData);
 });
 
-App.get("/movies/:id", (req, res) => {
-  moviesData.find((movie) => {
-    console.log(movie.id, req.params.id);
-    if (movie.id === parseInt(req.params.id)) {
-      // res.send(movie.imageUrl);
-      const options = {
-        root: path.join(__dirname, "assets/images/"),
-      };
+app.get("/movies/:id", (req, res) => {
+  const movieId = Number(req.params.id);
 
-      console.log(options.root+movie.imageUrl);
+  const movie = moviesData.find((item) => item.id === moveId);
 
-      res.sendFile(movie.imageUrl, options, (err) => {
-        if (err) {
-          res.sendStatus(404);
-        } else {
-          console.log("File sent to client");
-        }
-      });
-    }
-  });
-  
+  if (!movie) {
+    return res.status(404).json({
+      message: "Movie not found",
+    });
+  }
+
+  return res.json(movie);
 });
 
-App.listen(5555, () => {
-  console.log("Application started on port 5555");
+app.listen(PORT, () => {
+  console.log(`Application started on port ${PORT}`);
 });
