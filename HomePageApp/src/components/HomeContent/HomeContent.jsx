@@ -13,7 +13,6 @@ const HomeContent = (props) => {
     const resp = await fetch("http://localhost:5555/movies")
     const data = await resp.json()
     setMovies(data)
-    console.log({data})
   }, []);
 
   const movieClicked = (item) => {
@@ -26,7 +25,6 @@ const HomeContent = (props) => {
     let items = movies.map((item) => {
       return (
         <div onClick={() => movieClicked(item)} key={item.name}>
-          <div>Load the cards Here</div>
           <Suspense fallback={null}>
             <MovieCard title={item.name} imageUrl={item.imageUrl}></MovieCard>
           </Suspense>

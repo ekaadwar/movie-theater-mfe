@@ -2,6 +2,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const { ModuleFederationPlugin } = require("webpack").container;
+const deps = require("./package.json").dependencies;
 
 module.exports = {
   mode: "development",
@@ -23,6 +24,21 @@ module.exports = {
       filename: "remoteEntry.js",
       remotes: {
         component: "components@http://localhost:3002/remoteEntry.js",
+        details: "details@http://localhost:3001/remoteEntry.js",
+      },
+      shared: {
+        react: {
+          singleton: true,
+          requiredVersion: deps.react,
+        },
+        "react-dom": {
+          singleton: true,
+          requiredVersion: deps["react-dom"],
+        },
+        "react-router-dom": {
+          singleton: true,
+          requiredVersion: deps["react-router-dom"],
+        },
       },
     }),
     new MiniCssExtractPlugin(),
