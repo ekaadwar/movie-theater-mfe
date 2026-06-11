@@ -23,8 +23,8 @@ const App = () => {
       <div className="App">
         <Suspense>
           <Switch>
-            <Router exact path="/" component={HomePage} />
-            <Router path="/details/:id" component={DetailsPage} />
+            <Route exact path="/" component={HomePage} />
+            <Route path="/details/:id" component={DetailsPage} />
           </Switch>
         </Suspense>
       </div>

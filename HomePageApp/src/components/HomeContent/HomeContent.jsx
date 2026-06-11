@@ -4,15 +4,23 @@ import "./HomeContent.scss";
 
 const MovieCard = React.lazy(()=>import("component/MovieCard"))
 
-const dummyItem = [{name:"Dummy Movie"}]
+const dummyItem = [{id:"dummy", name:"Dummy Movie"}]
 
 const HomeContent = (props) => {
   const [movies, setMovies] = useState(dummyItem);
 
-  useEffect(async () => {
-    const resp = await fetch("http://localhost:5555/movies")
-    const data = await resp.json()
-    setMovies(data)
+  useEffect( () => {
+    const fetchMovies = async()=>{
+      try{
+        const resp = await fetch("http://localhost:5555/movies")
+        const data = await resp.json()
+        setMovies(data)
+      }catch(error){
+        console.error("Failed to fetch movies: ", error)
+      }
+    }
+
+    fetchMovies()
   }, []);
 
   const movieClicked = (item) => {
@@ -22,22 +30,20 @@ const HomeContent = (props) => {
   };
 
   const renderMovieList = () => {
-    let items = movies.map((item) => {
+    return movies.map((item) => {
       return (
-        <div onClick={() => movieClicked(item)} key={item.name}>
-          <Suspense fallback={null}>
-            <MovieCard title={item.name} imageUrl={item.imageUrl}></MovieCard>
+        <div onClick={() => movieClicked(item)} key={item.id}>
+          <Suspense fallback={<div>Loading movie card...</div>}>
+            <MovieCard title={item.name} imageUrl={item.imageUrl} />
           </Suspense>
         </div>
       );
     });
-
-    return items;
   };
 
   return (
     <div className="home-content-container">
-      <QuickBooking></QuickBooking>
+      <QuickBooking/>
       <div className="movies-container">
         {renderMovieList()}
       </div>

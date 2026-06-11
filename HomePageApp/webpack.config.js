@@ -10,6 +10,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].bundle.js",
+    publicPath: "auto",
+    uniqueName: "home_page_app",
   },
   devServer: {
     static: {
@@ -17,6 +19,7 @@ module.exports = {
     },
     open: true,
     port: 3000,
+    historyApiFallback: true,
   },
   plugins: [
     new ModuleFederationPlugin({
