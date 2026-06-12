@@ -18,7 +18,7 @@ app.get("/movies", (req, res) => {
 app.get("/movies/:id", (req, res) => {
   const movieId = Number(req.params.id);
 
-  const movie = moviesData.find((item) => item.id === moveId);
+  const movie = moviesData.find((item) => item.id === movieId);
 
   if (!movie) {
     return res.status(404).json({

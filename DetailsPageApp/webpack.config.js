@@ -10,6 +10,9 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].bundle.js",
+    publicPath: "auto",
+    uniqueName: "details_page_app",
+    clean: true,
   },
   devServer: {
     static: {
@@ -17,7 +20,12 @@ module.exports = {
     },
     open: true,
     port: 3001,
-    historyApiFallback: true,
+    historyApiFallback: {
+      index: "/index.html",
+    },
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
   },
   plugins: [
     new ModuleFederationPlugin({
@@ -45,6 +53,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       filename: "index.html",
+      publicPath: "/",
     }),
   ],
   module: {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {userParams} from "react-router-dom"
+import {useParams} from "react-router-dom"
 import "./DetailsContent.scss";
 
 const API_URL = "http://localhost:5555";

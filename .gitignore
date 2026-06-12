@@ -1,16 +1,21 @@
 DetailsPageApp/node_modules
 DetailsPageApp/package-lock.json
+DetailsPageApp/dist
 
 HomePageApp/node_modules
 HomePageApp/package-lock.json
+HomePageApp/dist
 
 MF_Server/node_modules
 MF_Server/package-lock.json
+MF_Server/dist
 
 ReactComponents/node_modules
 ReactComponents/package-lock.json
+ReactComponents/dist
 
 SeatSelectionApp/node_modules
 SeatSelectionApp/package-lock.json
+SeatSelectionApp/dist
 
 command.txt
