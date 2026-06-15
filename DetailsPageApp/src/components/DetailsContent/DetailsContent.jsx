@@ -19,7 +19,6 @@ const DetailsContent = (props) => {
         setError("")
 
         const resp = await fetch(`${API_URL}/movies/${id}`);
-        console.log({resp})
 
         if (!resp.ok) {
           throw new Error("Movie not found");
@@ -43,8 +42,6 @@ const DetailsContent = (props) => {
       date,
       time,
     };
-
-    console.log({booking})
   };
 
   if (loading) return <div>Loading movie detail...</div>;
