@@ -28,6 +28,7 @@ module.exports = {
       remotes: {
         component: "components@http://localhost:3002/remoteEntry.js",
         details: "details@http://localhost:3001/remoteEntry.js",
+        vueDetails: "vueDetails@http://localhost:3004/assets/remoteEntry.js",
       },
       shared: {
         react: {
@@ -48,6 +49,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       filename: "index.html",
+      publicPath: "/",
     }),
   ],
   module: {

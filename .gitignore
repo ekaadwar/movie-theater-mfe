@@ -18,4 +18,8 @@ SeatSelectionApp/node_modules
 SeatSelectionApp/package-lock.json
 SeatSelectionApp/dist
 
+VueDetailsPageApp/node_modules
+VueDetailsPageApp/package-lock.json
+VueDetailsPageApp/dist
+
 command.txt
