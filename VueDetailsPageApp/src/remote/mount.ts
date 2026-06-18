@@ -1,2 +1,2 @@
-export { mountApp } from '@/bootstrap'
-export type { MountOptions } from '@/bootstrap'
+export { mountApp } from "@/bootstrap";
+export type { MountOptions } from "@/bootstrap";

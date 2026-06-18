@@ -9,10 +9,9 @@ export default defineConfig({
     vue(),
     tailwindcss(),
     federation({
-      name: "vue_details",
+      name: "vueDetails",
       filename: "remoteEntry.js",
       exposes: {
-        "./DetailsPage": "./src/views/DetailsPage.vue",
         "./mount": "./src/remote/mount.ts",
       },
       shared: ["vue", "vue-router", "pinia"],
