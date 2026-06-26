@@ -1,32 +1,38 @@
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import App from './App.vue'
-import { createAppRouter } from './router'
-import './styles/main.css'
+import { createApp } from "vue";
+import { createPinia } from "pinia";
+import App from "./App.vue";
+import { createAppRouter } from "./router";
+import "./styles/main.css";
 
 export interface MountOptions {
-  base?: string
+  base?: string;
 }
 
-export function mountApp(container: string | Element, options: MountOptions = {}) {
-  const target = typeof container === 'string' ? document.querySelector(container) : container
+export function mountApp(
+  container: string | Element,
+  options: MountOptions = {},
+) {
+  const target =
+    typeof container === "string"
+      ? document.querySelector(container)
+      : container;
 
   if (!target) {
-    throw new Error('Mount container was not found')
+    throw new Error("Mount container was not found");
   }
 
-  const app = createApp(App)
-  const pinia = createPinia()
-  const router = createAppRouter(options.base ?? '/')
+  const app = createApp(App);
+  const pinia = createPinia();
+  const router = createAppRouter(options.base ?? "/");
 
-  app.use(pinia)
-  app.use(router)
-  app.mount(target)
+  app.use(pinia);
+  app.use(router);
+  app.mount(target);
 
   return {
     app,
     router,
     pinia,
-    unmount: () => app.unmount()
-  }
+    unmount: () => app.unmount(),
+  };
 }

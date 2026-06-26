@@ -14,7 +14,6 @@ export default defineConfig({
       exposes: {
         "./mount": "./src/remote/mount.ts",
       },
-      shared: ["vue", "vue-router", "pinia"],
     }),
   ],
   resolve: {

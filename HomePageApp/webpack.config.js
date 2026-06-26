@@ -17,7 +17,7 @@ module.exports = {
     static: {
       directory: path.resolve(__dirname, "dist"),
     },
-    open: true,
+    open: false,
     port: 3000,
     historyApiFallback: true,
   },
@@ -28,7 +28,6 @@ module.exports = {
       remotes: {
         component: "components@http://localhost:3002/remoteEntry.js",
         details: "details@http://localhost:3001/remoteEntry.js",
-        vueDetails: "vueDetails@http://localhost:3004/assets/remoteEntry.js",
       },
       shared: {
         react: {

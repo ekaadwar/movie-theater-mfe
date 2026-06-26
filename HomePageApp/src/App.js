@@ -2,7 +2,10 @@ import React, { Suspense } from "react";
 import { BrowserRouter, Switch, Route, useHistory } from "react-router-dom";
 import "./App.scss";
 import HomeContent from "./components/HomeContent/HomeContent.jsx";
-import VueDetailsPageWrapper from "./components/VueDetailsPageWrapper/VueDetailsPageWrapper.jsx";
+
+const VueDetailsPageWrapper = React.lazy(
+  () => import("./components/VueDetailsPageWrapper/VueDetailsPageWrapper.jsx"),
+);
 
 const HomePage = () => {
   const history = useHistory();
